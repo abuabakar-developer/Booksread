@@ -29,43 +29,43 @@ export default function RegisterForm() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-purple-400 to-pink-500">
-      <div className="w-full max-w-md p-8 space-y-4 bg-white rounded-lg shadow-lg">
-        <h2 className="text-2xl font-bold text-center text-gray-800">Register</h2>
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-purple-500 via-pink-500 to-red-500 p-6">
+      <div className="w-full max-w-md p-10 space-y-6 bg-white rounded-xl shadow-2xl transform transition-transform duration-500 hover:scale-105">
+        <h2 className="text-3xl font-bold text-center text-gray-800 tracking-wide">Register</h2>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="relative">
-            <FiMail className="absolute top-2.5 left-3 text-gray-400" />
+            <FiMail className="absolute top-3 left-4 text-gray-500" />
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Email"
               required
-              className="w-full px-10 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:outline-none"
+              className="w-full px-12 py-3 border border-gray-300 rounded-lg focus:ring-4 focus:ring-pink-500 focus:outline-none transition-colors duration-300"
             />
           </div>
           <div className="relative">
-            <FiLock className="absolute top-2.5 left-3 text-gray-400" />
+            <FiLock className="absolute top-3 left-4 text-gray-500" />
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Password"
               required
-              className="w-full px-10 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:outline-none"
+              className="w-full px-12 py-3 border border-gray-300 rounded-lg focus:ring-4 focus:ring-pink-500 focus:outline-none transition-colors duration-300"
             />
           </div>
           <button
             type="submit"
-            className="w-full py-3 text-white bg-pink-600 rounded-lg hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-500 transition-all duration-200"
+            className="w-full py-3 text-white bg-gradient-to-r from-pink-600 to-red-600 rounded-lg hover:bg-pink-700 focus:outline-none focus:ring-4 focus:ring-pink-500 transition-all duration-300"
             disabled={loading}
           >
             {loading ? 'Registering...' : 'Register'}
           </button>
         </form>
-        <p className="text-sm text-center text-gray-600">
+        <p className="text-sm text-center text-gray-600 mt-4">
           Already have an account?{' '}
-          <a href="/login" className="text-pink-500 hover:underline">
+          <a href="/login" className="text-red-500 hover:underline transition-colors duration-200">
             Log in
           </a>
         </p>
@@ -73,3 +73,4 @@ export default function RegisterForm() {
     </div>
   );
 }
+

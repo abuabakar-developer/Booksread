@@ -1,3 +1,4 @@
+
 // /pages/api/subscribe.ts
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { MongoClient } from 'mongodb';
@@ -37,3 +38,5 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 };
 
 export default handler;
+
+

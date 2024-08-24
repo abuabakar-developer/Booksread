@@ -2,8 +2,8 @@ import LoginForm from '../components/LoginForm';
 
 export default function LoginPage() {
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-green-400 via-blue-500 to-indigo-600 p-6">
-      <div className="relative bg-white p-10 rounded-3xl shadow-2xl w-full max-w-md transform transition-all duration-500 hover:scale-105 hover:shadow-lg">
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-green-500 via-blue-600 to-indigo-700 p-6">
+      <div className="relative bg-white p-10 rounded-3xl shadow-2xl w-full max-w-md transform transition-transform duration-500 hover:scale-105">
         <div className="absolute inset-0 bg-gradient-to-r from-indigo-300 to-blue-300 opacity-20 rounded-3xl"></div>
         <h1 className="text-4xl font-extrabold mb-6 text-center text-gray-800 relative z-10">
           Welcome Back
@@ -22,5 +22,4 @@ export default function LoginPage() {
     </div>
   );
 }
-
 
