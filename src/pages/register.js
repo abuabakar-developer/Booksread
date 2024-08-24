@@ -1,5 +1,6 @@
 import RegisterForm from '../components/RegisterForm';
 import { FaUserPlus } from 'react-icons/fa';
+import Link from 'next/link';
 
 export default function RegisterPage() {
   return (
@@ -15,11 +16,14 @@ export default function RegisterPage() {
         <RegisterForm />
         <p className="mt-8 text-center text-sm text-gray-600 relative z-10">
           Already have an account?{' '}
-          <a href="/login" className="text-pink-900 hover:underline font-bold">
-            Login here
-          </a>
+          <Link href="/login">
+            <a className="text-pink-900 hover:underline font-bold">Login here</a>
+          </Link>
         </p>
       </div>
     </div>
   );
 }
+
+
+
