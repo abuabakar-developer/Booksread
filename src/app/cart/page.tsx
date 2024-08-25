@@ -3,12 +3,10 @@ import { AiOutlineClose } from 'react-icons/ai';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '@/types/rootState'; // Adjust path as necessary
+import { RootState } from '@/types/rootState';
 import { removeBook } from '../redux/cartSlice';
 import { loadStripe } from '@stripe/stripe-js';
 import { Book } from '@/types/cartTypes';
-
-
 
 const Cart = () => {
     // Use the RootState type with useSelector
@@ -17,14 +15,16 @@ const Cart = () => {
     const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY || '');
 
     let totalPrice = 0;
-    books.forEach((book) => totalPrice += (book.quantity * book.price));
+
+    // Explicitly type the 'book' parameter
+    books.forEach((book: Book) => totalPrice += (book.quantity * book.price));
 
     const handleRemoveBook = (book: Book) => {
         dispatch(removeBook({ id: book.id }));
     }
 
     const handleCheckout = async () => {
-        const lineItems = books.map((book) => ({
+        const lineItems = books.map((book: Book) => ({
             price_data: {
                 currency: 'usd',
                 product_data: {
@@ -57,7 +57,7 @@ const Cart = () => {
             <div className="flex flex-wrap">
                 <div className="w-full md:w-2/3">
                     {books.length > 0
-                        ? books.map((book) => (
+                        ? books.map((book: Book) => (
                             <div key={book.id} className="flex items-center mb-4 p-4 border rounded-lg shadow-md">
                                 <div className="cursor-pointer mr-4" onClick={() => handleRemoveBook(book)}>
                                     <AiOutlineClose />
@@ -99,6 +99,4 @@ const Cart = () => {
 }
 
 export default Cart;
-
-
 
