@@ -6,7 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/types/rootState'; // Adjust path as necessary
 import { removeBook } from '../redux/cartSlice';
 import { loadStripe } from '@stripe/stripe-js';
-import { Book } from '../types/cartTypes';
+import { Book } from '@/types/cartTypes';
+
 
 
 const Cart = () => {
@@ -98,3 +99,6 @@ const Cart = () => {
 }
 
 export default Cart;
+
+
+
