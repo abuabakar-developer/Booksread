@@ -14,7 +14,7 @@ export default function LoginPage() {
         </p>
         <LoginForm />
         <p className="mt-6 text-center text-gray-700 relative z-10">
-          Don&apos;t have an account?{' '}
+          Don’t have an account?{' '}
           <Link href="/register" className="text-blue-700 font-semibold hover:text-indigo-500 hover:underline">
             Register here
           </Link>
@@ -23,6 +23,5 @@ export default function LoginPage() {
     </div>
   );
 }
-
 
 
