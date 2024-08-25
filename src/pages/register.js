@@ -17,13 +17,10 @@ export default function RegisterPage() {
         <p className="mt-8 text-center text-sm text-gray-600 relative z-10">
           Already have an account?{' '}
           <Link href="/login">
-            <a className="text-pink-900 hover:underline font-bold">Login here</a>
+            <span className="text-pink-900 hover:underline font-bold">Login here</span>
           </Link>
         </p>
       </div>
     </div>
   );
 }
-
-
-

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { FiMail, FiLock } from 'react-icons/fi';
-import Link from 'next/link'; // Import Link from next/link
+import Link from 'next/link';
 
 export default function LoginForm() {
   const [email, setEmail] = useState('');
@@ -69,13 +69,13 @@ export default function LoginForm() {
         </form>
         <p className="text-sm text-center text-gray-600 mt-4">
           Don&apos;t have an account?{' '}
-          <Link href="/register">
-            <a className="text-indigo-500 hover:underline transition-colors duration-200">
-              Sign up
-            </a>
+          <Link href="/register" className="text-indigo-500 hover:underline transition-colors duration-200">
+            Sign up
           </Link>
         </p>
       </div>
     </div>
   );
 }
+
+

@@ -66,13 +66,13 @@ export default function RegisterForm() {
         </form>
         <p className="text-sm text-center text-gray-600 mt-4">
           Already have an account?{' '}
-          <Link href="/login">
-            <a className="text-red-500 hover:underline transition-colors duration-200">
-              Log in
-            </a>
+          <Link href="/login" className="text-red-500 hover:underline transition-colors duration-200">
+            Log in
           </Link>
         </p>
       </div>
     </div>
   );
 }
+
+
