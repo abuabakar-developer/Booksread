@@ -145,14 +145,14 @@ const Footer = () => {
 
       {/* Social Media Links */}
       <div className="border-t border-gray-600 mt-8 pt-6 flex justify-center space-x-6 relative z-10">
-        <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="Github">
-          <img src="/github.png" alt="Github" className="w-6 h-6 sm:w-8 sm:h-8 hover:opacity-80 transition-opacity duration-300" />
-        </a>
-        <a href="https://netlify.com" target="_blank" rel="noopener noreferrer" aria-label="Netlify">
+        <a href="https://abakarcody.netlify.app" target="_blank" rel="noopener noreferrer" aria-label="Netlify">
           <img src="/netlify.png" alt="Netlify" className="w-6 h-6 sm:w-8 sm:h-8 hover:opacity-80 transition-opacity duration-300" />
         </a>
         <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
           <img src="/linkedun.jpeg" alt="LinkedIn" className="w-6 h-6 sm:w-8 sm:h-8 hover:opacity-80 transition-opacity duration-300" />
+        </a>
+        <a href="https://ab-ui.vercel.app" target="_blank" rel="noopener noreferrer" aria-label="Vercel">
+          <img src="/vercel.jpeg" alt="Vercel" className="w-6 h-6 sm:w-8 sm:h-8 hover:opacity-80 transition-opacity duration-300" />
         </a>
       </div>
 

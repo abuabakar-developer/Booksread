@@ -1,11 +1,6 @@
-// components/Hero.tsx
 import React from 'react';
 
-interface HeroProps {
-  onExploreBooksClick: () => void;
-}
-
-const Hero: React.FC<HeroProps> = ({ onExploreBooksClick }) => {
+const Hero: React.FC = () => {
   return (
     <div
       className="relative h-[calc(100vh-75px)] w-full bg-center bg-cover"
@@ -31,6 +26,3 @@ const Hero: React.FC<HeroProps> = ({ onExploreBooksClick }) => {
 };
 
 export default Hero;
-
-
-

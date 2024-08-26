@@ -1,13 +1,12 @@
-import BookCatalog from "@/components/bookCatalog";
-import Hero from "@/components/hero";
+import React from 'react';
+import Hero from '@/components/hero';
+import BookCatalog from '@/components/bookCatalog';
 
-
-export default function Home() {
+export default function HomePage() {
   return (
-     <main>
-      <Hero />
+    <main>
+      <Hero /> 
       <BookCatalog />
-     </main>
+    </main>
   );
 }
-
