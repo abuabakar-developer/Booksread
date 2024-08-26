@@ -1,4 +1,4 @@
-import { combineReducers, configureStore, MiddlewareArray } from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import {
     persistStore,
     persistReducer,
@@ -35,4 +35,7 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
+
+
+
 
