@@ -1,20 +1,23 @@
-"use client"
-import Navbar from '@/components/navbar'
+"use client";
 
-import './globals.css'
-import { Inter } from 'next/font/google'
-import Footer from '@/components/footer'
-import { SessionProvider } from 'next-auth/react'
-import { persistor, store } from '../app/redux/store'
-import { PersistGate } from 'redux-persist/integration/react'
-import { Provider } from 'react-redux'
-import FreeDelivery from '@/components/freeDelievery'
+import React, { ReactNode } from 'react';
+import Navbar from '@/components/navbar';
+import './globals.css';
+import { Inter } from 'next/font/google';
+import Footer from '@/components/footer';
+import { SessionProvider } from 'next-auth/react';
+import { persistor, store } from '../app/redux/store';
+import { PersistGate } from 'redux-persist/integration/react';
+import { Provider } from 'react-redux';
+import FreeDelivery from '@/components/freeDelievery';
 
+const inter = Inter({ subsets: ['latin'] });
 
+interface RootLayoutProps {
+  children: ReactNode;
+}
 
-const inter = Inter({ subsets: ['latin'] })
-
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
       <body className={inter.className}>
@@ -30,6 +33,9 @@ export default function RootLayout({ children }) {
         </Provider>
       </body>
     </html>
-  )
+  );
 }
+
+
+
 
