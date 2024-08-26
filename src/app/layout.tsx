@@ -9,6 +9,7 @@ import { SessionProvider } from 'next-auth/react';
 import { persistor, store } from '../app/redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';
+import { Store } from 'redux';
 import FreeDelivery from '@/components/freeDelievery';
 
 const inter = Inter({ subsets: ['latin'] });

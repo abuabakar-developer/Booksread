@@ -35,9 +35,7 @@ export const store = configureStore({
             serializableCheck: {
                 ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
             },
-        }) as ReturnType<typeof getDefaultMiddleware>, // Cast the middleware type to match expectations
+        }),
 });
 
 export const persistor = persistStore(store);
-
-
