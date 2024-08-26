@@ -1,30 +1,44 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-const initialState = {
-    books: []
+// Define the Book interface to type the book objects
+interface Book {
+    id: string;
+    title: string;
+    author: string;
+    quantity: number;
+    // Add other properties as needed
 }
 
+// Define the CartState interface to type the state
+interface CartState {
+    books: Book[];
+}
+
+// Initialize the state with the correct type
+const initialState: CartState = {
+    books: [],
+};
+
 export const cartSlice = createSlice({
-    name: 'cart',
+    name: "cart",
     initialState,
     reducers: {
-        addBook: (state, action) => {
-            const book = state.books.find((book) => book.id === action.payload.id)
+        addBook: (state, action: PayloadAction<Book>) => {
+            const book = state.books.find((book) => book.id === action.payload.id);
 
             if (book) {
-                book.quantity = action.payload.quantity
+                book.quantity = action.payload.quantity;
             } else {
-                state.books.push(action.payload)
+                state.books.push(action.payload);
             }
         },
-        removeBook: (state, action) => {
-            state.books = state.books.filter((book) => book.id !== action.payload.id)
-        }
-    }
-})
+        removeBook: (state, action: PayloadAction<{ id: string }>) => {
+            state.books = state.books.filter((book) => book.id !== action.payload.id);
+        },
+    },
+});
 
-export const { addBook, removeBook } = cartSlice.actions
+export const { addBook, removeBook } = cartSlice.actions;
 
-export default cartSlice.reducer
-
+export default cartSlice.reducer;
 
