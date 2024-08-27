@@ -21,7 +21,7 @@ const Pagination: React.FC<PaginationProps> = ({ setItemOffset, itemsPerPage, bo
   }   
           
   return (
-    <div className="flex justify-center items-center mt-8">
+    <nav aria-label="Pagination Navigation" className="flex justify-center items-center mt-8">
       <ReactPaginate
         nextClassName="flex items-center justify-center w-10 h-10 rounded-full border border-gray-300 bg-white text-gray-700 hover:bg-gray-200 transition duration-300"
         previousClassName="flex items-center justify-center w-10 h-10 rounded-full border border-gray-300 bg-white text-gray-700 hover:bg-gray-200 transition duration-300"
@@ -36,13 +36,11 @@ const Pagination: React.FC<PaginationProps> = ({ setItemOffset, itemsPerPage, bo
         pageRangeDisplayed={3}
         pageCount={totalPages}
         renderOnZeroPageCount={null}
-        ariaLabel="Pagination Navigation"
         role="navigation"
       />
-    </div>
+    </nav>
   );
 };
 
 export default Pagination;
-
 
