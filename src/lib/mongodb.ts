@@ -12,10 +12,7 @@ export const connectToDatabase = async (): Promise<void> => {
   }
 
   try {
-    await mongoose.connect(MONGO_URL, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    await mongoose.connect(MONGO_URL);
     isConnected = true;
     console.log('MongoDB connected successfully');
   } catch (error) {
@@ -23,3 +20,4 @@ export const connectToDatabase = async (): Promise<void> => {
     process.exit(1); // Exit process with an error code
   }
 };
+
