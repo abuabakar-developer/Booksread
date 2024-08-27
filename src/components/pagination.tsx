@@ -2,8 +2,14 @@ import React from 'react';
 import ReactPaginate from 'react-paginate';
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai';
 
-const Pagination = ({ setItemOffset, itemsPerPage, books }) => {
-  const handlePageClick = (event) => {
+interface PaginationProps {
+  setItemOffset: (offset: number) => void;
+  itemsPerPage: number;
+  books: any[]; // Adjust this type based on your book structure
+}
+
+const Pagination: React.FC<PaginationProps> = ({ setItemOffset, itemsPerPage, books }) => {
+  const handlePageClick = (event: { selected: number }) => {
     const newOffset = event.selected * itemsPerPage;
     setItemOffset(newOffset);
   };
@@ -38,3 +44,5 @@ const Pagination = ({ setItemOffset, itemsPerPage, books }) => {
 };
 
 export default Pagination;
+
+
