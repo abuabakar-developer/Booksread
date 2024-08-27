@@ -35,7 +35,8 @@ export const store = configureStore({
             serializableCheck: {
                 ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
             },
-        }),
+        }).concat([]), // Add .concat([]) if you plan to add more custom middleware later
 });
 
 export const persistor = persistStore(store);
+

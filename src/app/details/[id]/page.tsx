@@ -189,7 +189,7 @@ const Details = ({ params }: { params: { id: string } }) => {
             )}
           </div>
         </div>
-      </div>
+      </div>  
     </div>
   );
 };
