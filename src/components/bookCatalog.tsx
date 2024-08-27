@@ -33,15 +33,15 @@ const BookCatalog = () => {
   const endOffset = itemOffset + itemsPerPage;
   const currentBooks = books.slice(itemOffset, endOffset);
 
-  const handleSearch = (e) => {
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
   };
 
-  const handleSearchTypeChange = (e) => {
+  const handleSearchTypeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSearchType(e.target.value === 'title' ? 'intitle' : 'inauthor');
   };
 
-  const handleBookClick = (book) => {
+  const handleBookClick = (book: any) => {
     setSelectedBookId(book.id);
   };
 
