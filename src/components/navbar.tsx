@@ -20,7 +20,7 @@ const Navbar = () => {
         <div className="flex items-center gap-4">
           {isLoggedIn ? (
             <>
-              <span className="text-white">Welcome, {session.user?.name}!</span>
+              <span className="text-white">Welcome, {session?.user?.name || 'Guest'}!</span>
               <button
                 onClick={() => signOut()}
                 className="px-3 py-1 bg-white text-green-900 rounded-md transition duration-150 hover:bg-gray-700 hover:text-white"
@@ -51,3 +51,5 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+
