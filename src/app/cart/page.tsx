@@ -8,7 +8,7 @@ import { removeBook } from '../redux/cartSlice';
 import { loadStripe } from '@stripe/stripe-js';
 import { Book } from '@/types/cartTypes';
 
-const Cart = () => {
+const Cart: React.FC = () => {
     // Use the RootState type with useSelector
     const { books } = useSelector((state: RootState) => state.cart);
     const dispatch = useDispatch();
@@ -99,4 +99,3 @@ const Cart = () => {
 }
 
 export default Cart;
-
