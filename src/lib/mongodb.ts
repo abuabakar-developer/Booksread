@@ -1,17 +1,15 @@
-
-
-
-///mongodb.ts 
-
-// lib/mongodb.js
 import mongoose from 'mongoose';
 
-const MONGO_URL = process.env.MONGO_URL; // Ensure this is set in your .env.local file
+const MONGO_URL = process.env.MONGO_URL as string;
 
 let isConnected = false;
 
-export const connectToDatabase = async () => {
+export const connectToDatabase = async (): Promise<void> => {
   if (isConnected) return;
+
+  if (!MONGO_URL) {
+    throw new Error('MONGO_URL environment variable is not defined.');
+  }
 
   try {
     await mongoose.connect(MONGO_URL, {
@@ -22,7 +20,6 @@ export const connectToDatabase = async () => {
     console.log('MongoDB connected successfully');
   } catch (error) {
     console.error('MongoDB connection error:', error);
-    process.exit(1);
+    process.exit(1); // Exit process with an error code
   }
 };
-
