@@ -5,14 +5,22 @@ import Pagination from './pagination';
 import Details from '@/app/details/[id]/page';
 import { fetchBooks } from '../lib/fetchBooks';
 
+// Define the Book type
+type Book = {
+  id: string;
+  title: string;
+  author: string;
+  // Add any other properties you are using
+};
+
 const BookCatalog = () => {
   const [query, setQuery] = useState('the lord of the rings');
   const [searchType, setSearchType] = useState('intitle');
-  const [books, setBooks] = useState([]);
+  const [books, setBooks] = useState<Book[]>([]); // Apply the Book type
   const [isLoading, setIsLoading] = useState(false);
   const [itemOffset, setItemOffset] = useState(0);
   const itemsPerPage = 6;
-  const [selectedBookId, setSelectedBookId] = useState(null);
+  const [selectedBookId, setSelectedBookId] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,7 +49,7 @@ const BookCatalog = () => {
     setSearchType(e.target.value === 'title' ? 'intitle' : 'inauthor');
   };
 
-  const handleBookClick = (book: any) => {
+  const handleBookClick = (book: Book) => {
     setSelectedBookId(book.id);
   };
 
@@ -82,7 +90,7 @@ const BookCatalog = () => {
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-            {currentBooks.map((book) => (
+            {currentBooks.map((book: Book) => ( // Apply the Book type
               <div 
                 key={book.id} 
                 onClick={() => handleBookClick(book)} 
@@ -110,4 +118,9 @@ const BookCatalog = () => {
 };
 
 export default BookCatalog;
+
+
+
+
+
 
