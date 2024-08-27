@@ -5,6 +5,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../types/rootState';
 import { removeBook } from '@/app/redux/cartSlice';
 
+interface Book {
+    id: string;
+    title: string;
+    // Add other properties of the book as needed, e.g., author, price, etc.
+}
+
 const Cart = () => {
     const { books } = useSelector((state: RootState) => state.cart);
     const dispatch = useDispatch();
@@ -15,7 +21,7 @@ const Cart = () => {
 
     return (
         <div>
-            {books.map((book) => (
+            {books.map((book: Book) => (
                 <div key={book.id}>
                     <h3>{book.title}</h3>
                     <button onClick={() => handleRemoveBook(book.id)}>Remove</button>
@@ -26,3 +32,4 @@ const Cart = () => {
 };
 
 export default Cart;
+
