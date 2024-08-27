@@ -2,10 +2,11 @@ import { signIn, signOut, useSession } from 'next-auth/react';
 import Link from 'next/link';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { useSelector } from 'react-redux';
+import { RootState } from '@/types/rootState';
 
 const Navbar = () => {
   const { data: session } = useSession();
-  const books = useSelector((state) => state.cart.books);
+  const books = useSelector((state: RootState) => state.cart.books);
   const isLoggedIn = Boolean(session?.user);
 
   return (
@@ -50,4 +51,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
