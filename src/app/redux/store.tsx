@@ -1,4 +1,6 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
+// src/app/redux/store.tsx
+
+import { combineReducers, configureStore, MiddlewareArray } from "@reduxjs/toolkit";
 import {
     persistStore,
     persistReducer,
@@ -20,14 +22,14 @@ const persistConfig = {
 };
 
 // Combine reducers
-const reducers = combineReducers({
+const rootReducer = combineReducers({
     cart: cartSlice,
 });
 
 // Persisted reducer
-const persistedReducer = persistReducer(persistConfig, reducers);
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-// Configure store
+// Configure store with correct middleware handling
 export const store = configureStore({
     reducer: persistedReducer,
     middleware: (getDefaultMiddleware) =>
@@ -35,8 +37,7 @@ export const store = configureStore({
             serializableCheck: {
                 ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
             },
-        }).concat([]), // Add .concat([]) if you plan to add more custom middleware later
+        }) as MiddlewareArray<any>,
 });
 
 export const persistor = persistStore(store);
-
