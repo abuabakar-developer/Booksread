@@ -13,10 +13,7 @@ async function dbConnect() {
   if (cachedClient) return;
 
   try {
-    cachedClient = await mongoose.connect(MONGO_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    cachedClient = await mongoose.connect(MONGO_URI);
     console.log('MongoDB connected');
   } catch (error) {
     console.error('Failed to connect to MongoDB', error);
@@ -25,3 +22,8 @@ async function dbConnect() {
 }
 
 export default dbConnect;
+
+
+
+
+
