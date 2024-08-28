@@ -7,6 +7,8 @@ export interface Book {
     title: string;
     author: string;
     quantity: number;
+    cover_image: 'https://example.com/great-gatsby.jpg',
+    price: 10,
     // Add other properties as needed
 }
 

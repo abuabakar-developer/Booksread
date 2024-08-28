@@ -16,8 +16,10 @@ const Cart: React.FC = () => {
 
     let totalPrice = 0;
 
-    // Explicitly type the 'book' parameter
-    books.forEach((book: Book) => totalPrice += (book.quantity * book.price));
+    // Calculate total price
+    books.forEach((book: Book) => {
+        totalPrice += (book.quantity * book.price);
+    });
 
     const handleRemoveBook = (book: Book) => {
         dispatch(removeBook({ id: book.id }));
@@ -99,3 +101,6 @@ const Cart: React.FC = () => {
 }
 
 export default Cart;
+
+
+
