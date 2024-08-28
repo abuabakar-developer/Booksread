@@ -14,7 +14,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         const reviews = await Review.find({ bookId });
         res.status(200).json({ success: true, reviews });
       } catch (error) {
-        res.status(400).json({ success: false, message: error.message });
+        const errorMessage = (error as Error).message || "An unknown error occurred";
+        res.status(400).json({ success: false, message: errorMessage });
       }
       break;
     case 'POST':
@@ -24,7 +25,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         await newReview.save();
         res.status(201).json({ success: true, review: newReview });
       } catch (error) {
-        res.status(400).json({ success: false, message: error.message });
+        const errorMessage = (error as Error).message || "An unknown error occurred";
+        res.status(400).json({ success: false, message: errorMessage });
       }
       break;
     default:
@@ -32,3 +34,5 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       break;
   }
 }
+
+
