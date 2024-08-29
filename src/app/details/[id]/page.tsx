@@ -18,8 +18,8 @@ const Details = ({ params }: { params: { id: string } }) => {
   const [showModal, setShowModal] = useState(false);
   const reviewSectionRef = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => {
-    const fetchDetails = async () => {
+  useEffect(() => { 
+    const fetchDetails = async () => { 
       try {
         const res = await fetch(URL);
         const data = await res.json();
