@@ -9,9 +9,10 @@ import { loadStripe } from '@stripe/stripe-js';
 import { Book } from '@/types/cartTypes';
 
 const Cart: React.FC = () => {
-    // Use the RootState type with useSelector
+    // Ensure hooks are used correctly
     const { books } = useSelector((state: RootState) => state.cart);
     const dispatch = useDispatch();
+
     const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY || '');
 
     let totalPrice = 0;
@@ -65,7 +66,7 @@ const Cart: React.FC = () => {
                                     <AiOutlineClose />
                                 </div>
                                 <Link href={`/details/${book.id}`}>
-                                    <Image src={book.cover_image} width="175" height="375" className="w-24 h-32 object-cover" alt={book.title} />
+                                    <Image src={book.cover_image} width={175} height={375} className="w-24 h-32 object-cover" alt={book.title} />
                                 </Link>
                                 <div className="ml-4 flex-grow">
                                     <h3 className="text-lg font-semibold">{book.title}</h3>
@@ -101,6 +102,4 @@ const Cart: React.FC = () => {
 }
 
 export default Cart;
-
-
 
