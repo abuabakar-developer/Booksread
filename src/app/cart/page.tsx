@@ -7,8 +7,6 @@ import { RootState } from '@/types/rootState';
 import { removeBook } from '../redux/cartSlice';
 import { loadStripe } from '@stripe/stripe-js';
 import { Book } from '@/types/cartTypes';
-import { useContext } from 'react';
-
 
 
 const Cart: React.FC = () => {
