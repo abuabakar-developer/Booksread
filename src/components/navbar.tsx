@@ -10,7 +10,7 @@ const Navbar = () => {
   const isLoggedIn = Boolean(session?.user);
 
   return (
-    <div className="h-16 w-full bg-gray-600 shadow-lg sticky top-0 z-10">
+    <div className="h-16 w-full bg-gray-700 shadow-lg sticky top-0 z-10">
       <div className="max-w-7xl mx-auto h-full flex items-center justify-between px-4 sm:px-6 lg:px-8">
         <div className="flex items-center gap-4">
           <Link href="/" className="text-white text-2xl font-bold hover:text-gray-300 transition duration-150">
