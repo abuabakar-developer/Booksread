@@ -1,4 +1,4 @@
-import { combineReducers, configureStore, MiddlewareArray } from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import {
     persistStore,
     persistReducer,
@@ -30,14 +30,12 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 // Configure store with correct middleware handling
 export const store = configureStore({
     reducer: persistedReducer,
-    middleware: (getDefaultMiddleware) => 
-        new MiddlewareArray().concat(
-            getDefaultMiddleware({
-                serializableCheck: {
-                    ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-                },
-            })
-        ),
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({
+            serializableCheck: {
+                ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+            },
+        }),
 });
 
 // Export persistor for persisting the store
@@ -46,5 +44,3 @@ export const persistor = persistStore(store);
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
-
-
