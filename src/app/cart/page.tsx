@@ -1,3 +1,5 @@
+"use client"
+
 import React from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
 import Link from 'next/link';
@@ -9,7 +11,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import { Book } from '@/types/cartTypes';
 
 
-const Cart: React.FC = () => {
+const Cart = () => {
     // Ensure hooks are used correctly
     const { books } = useSelector((state: RootState) => state.cart);
     const dispatch = useDispatch();
