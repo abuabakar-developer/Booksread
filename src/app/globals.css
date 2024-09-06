@@ -21,15 +21,13 @@ a {
 }
 
 
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: rgb(80, 80, 189);
-    color: black;
-  }
-}
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
 }
+
+
+
+
+

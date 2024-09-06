@@ -24,10 +24,10 @@ const Navbar = () => {
         <Link href="/" className="flex items-center text-white text-3xl font-extrabold hover:text-gray-300 transition-colors duration-150">
           Abakar&apos;s Reads
         </Link>
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-4 md:gap-6">
           {isLoggedIn ? (
             <>
-              <span className="text-white text-sm">Welcome, User!</span>
+              <span className="text-white text-sm hidden md:block">Welcome, User!</span>
               <button
                 onClick={handleLogout}
                 className="px-4 py-2 bg-gradient-to-r from-green-400 to-green-600 text-white rounded-md shadow-lg transition-transform transform duration-150 hover:scale-105 hover:from-green-500 hover:to-green-700"
@@ -60,3 +60,5 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+
