@@ -1,14 +1,19 @@
 
-// pages/api/auth/register.js
+// pages/api/auth/register.ts
+import type { NextApiRequest, NextApiResponse } from 'next';
 import { connectToDatabase } from '../../../lib/mongodb';
 import User from '../../../models/User';
 
-export default async function handler(req, res) {
+type Data = {
+  message?: string;
+};
+
+export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
   await connectToDatabase();
 
   if (req.method === 'POST') {
     const { email, password } = req.body;
-    
+
     if (!email || !password) {
       return res.status(400).json({ message: 'Email and password are required' });
     }
@@ -31,4 +36,7 @@ export default async function handler(req, res) {
     res.status(405).end(`Method ${req.method} Not Allowed`);
   }
 }
+
+
+
 

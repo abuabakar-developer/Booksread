@@ -1,3 +1,4 @@
+//lib/mongodb.ts 
 import mongoose from 'mongoose';
 
 const MONGO_URL = process.env.MONGO_URL as string;
@@ -20,4 +21,10 @@ export const connectToDatabase = async (): Promise<void> => {
     process.exit(1); // Exit process with an error code
   }
 };
+
+  
+
+
+
+
 

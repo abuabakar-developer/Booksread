@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY!);
 
-const CheckoutButton = ({ items }: { items: Array<{ id: string; quantity: number }> }) => {
+const CheckoutButton = ({ items }: { items: Array<{ name: string; price: number; quantity: number }> }) => {
   const [loading, setLoading] = useState(false);
 
   const handleClick = async () => {
@@ -40,3 +40,9 @@ const CheckoutButton = ({ items }: { items: Array<{ id: string; quantity: number
 };
 
 export default CheckoutButton;
+
+
+
+
+
+

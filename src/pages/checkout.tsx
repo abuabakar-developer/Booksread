@@ -1,4 +1,3 @@
-// pages/checkout.tsx
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { loadStripe } from '@stripe/stripe-js';
@@ -7,7 +6,7 @@ const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY!);
 
 const Checkout = () => {
   const router = useRouter();
-  const { bookName, bookPrice } = router.query;
+  const { bookName, bookPrice } = router.query; // Ensure bookPrice is in cents (integer)
 
   useEffect(() => {
     const createCheckoutSession = async () => {
@@ -18,7 +17,7 @@ const Checkout = () => {
         },
         body: JSON.stringify({
           items: [
-            { name: bookName, price: bookPrice, quantity: 1 },
+            { name: bookName, price: parseInt(bookPrice as string, 10), quantity: 1 }, // Parse price correctly
           ],
         }),
       });
@@ -26,6 +25,7 @@ const Checkout = () => {
       const session = await response.json();
 
       const stripe = await stripePromise;
+
       const { error } = await stripe!.redirectToCheckout({
         sessionId: session.id,
       });

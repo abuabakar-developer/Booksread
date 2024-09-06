@@ -1,5 +1,6 @@
-"use client";
 
+//layout.ts 
+"use client";
 import React, { ReactNode } from 'react';
 import Navbar from '@/components/navbar';
 import './globals.css';
@@ -39,7 +40,5 @@ export default function RootLayout({ children }: RootLayoutProps) {
     </html>
   );
 }
-
-
 
 

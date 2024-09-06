@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaBookOpen, FaTwitter, FaFacebookF, FaInstagram } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 
 const Footer = () => {
   const [showAbout, setShowAbout] = useState(false);
@@ -49,10 +50,15 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative overflow-hidden bg-gray-900 text-white py-16 md:py-24">
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-900 to-gray-900 opacity-80 -z-10 rounded-t-full blur-lg"></div>
+    <footer className="relative bg-gray-900 text-white py-16 md:py-24">
+      {/* Custom SVG Wave Background */}
+      <div className="absolute inset-0">
+        <svg className="w-full h-full" viewBox="0 0 1440 320" preserveAspectRatio="none">
+          <path fill="#1f2937" d="M0,224L60,224C120,224,240,224,360,197.3C480,171,600,117,720,106.7C840,96,960,128,1080,160C1200,192,1320,224,1380,240L1440,256L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
+        </svg>
+      </div>
+      
       <div className="container mx-auto px-6 sm:px-10 lg:px-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 relative z-10">
-
         {/* About Us Section */}
         <div className="space-y-6">
           <button
@@ -61,11 +67,15 @@ const Footer = () => {
           >
             <FaBookOpen className="mr-3" /> About Us
           </button>
-          {showAbout && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: showAbout ? 1 : 0, height: showAbout ? 'auto' : 0 }}
+            className="overflow-hidden"
+          >
             <p className="text-base sm:text-lg leading-relaxed">
               Abakar Reads is your premier online bookstore, offering a diverse range of books for all readers. Our mission is to ignite a passion for reading by providing a seamless and delightful shopping experience.
             </p>
-          )}
+          </motion.div>
         </div>
 
         {/* Contact Us Section */}
@@ -76,22 +86,24 @@ const Footer = () => {
           >
             <FaEnvelope className="mr-3" /> Contact Us
           </button>
-          {showContact && (
-            <ul className="space-y-4 text-base sm:text-lg">
-              <li className="flex items-center">
-                <FaEnvelope className="mr-2" /> 
-                <a href="mailto:support@abakarreads.com" className="underline hover:text-gray-300">
-                  support@abakarreads.com
-                </a>
-              </li>
-              <li className="flex items-center">
-                <FaPhone className="mr-2" /> 03154195240
-              </li>
-              <li className="flex items-center">
-                <FaMapMarkerAlt className="mr-2" /> 123 Bookstore Ave, Read City Jaranwala
-              </li>
-            </ul>
-          )}
+          <motion.ul
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: showContact ? 1 : 0, height: showContact ? 'auto' : 0 }}
+            className="overflow-hidden space-y-4 text-base sm:text-lg"
+          >
+            <li className="flex items-center">
+              <FaEnvelope className="mr-2" />
+              <a href="mailto:support@abakarreads.com" className="underline hover:text-gray-300">
+                support@abakarreads.com
+              </a>
+            </li>
+            <li className="flex items-center">
+              <FaPhone className="mr-2" /> 03154195240
+            </li>
+            <li className="flex items-center">
+              <FaMapMarkerAlt className="mr-2" /> 123 Bookstore Ave, Read City Jaranwala
+            </li>
+          </motion.ul>
         </div>
 
         {/* Quick Links Section */}
@@ -101,73 +113,83 @@ const Footer = () => {
           </h3>
           <ul className="space-y-4">
             <li>
-              <button onClick={handleShowAbout} className="hover:text-gray-300 transition-colors duration-300">
-                About Us
-              </button>
-            </li>
-            <li>
-              <button onClick={handleShowContact} className="hover:text-gray-300 transition-colors duration-300">
-                Contact Us
-              </button>
-            </li>
-            <li>
               <Link href="/" className="hover:text-gray-300 transition-colors duration-300">
                 Home
               </Link>
             </li>
+            <li>
+              <Link href="/books" className="hover:text-gray-300 transition-colors duration-300">
+                Books
+              </Link>
+            </li>
+              <li>
+              <a
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleShowAbout();
+                }}
+                className="hover:text-gray-300 transition-colors duration-300 cursor-pointer"
+              >
+                About Us
+              </a>
+            </li>
+            <li>
+             <a
+            href="#"
+             onClick={(e) => {
+          e.preventDefault();
+          handleShowContact();
+        }}
+            className="hover:text-gray-300 transition-colors duration-300 cursor-pointer"
+          >
+        Contact Us
+      </a>
+    </li>
           </ul>
         </div>
 
-        {/* Newsletter Subscription Section */}
-        <div className="bg-opacity-80 backdrop-blur-md p-8 rounded-lg shadow-xl">
+        {/* Newsletter Subscription */}
+        <div className="space-y-6">
           <h3 className="text-3xl font-bold mb-5 text-white pb-2 border-b-2 border-white transform transition-transform duration-300 hover:scale-110">
-            Subscribe to Our Newsletter
+            Subscribe to our Newsletter
           </h3>
-          <p className="text-base sm:text-lg mb-5">
-            Stay updated with the latest book releases and exclusive offers.
+          <p className="text-base sm:text-lg">
+            Stay updated with our latest books, promotions, and offers. Subscribe now!
           </p>
-          <form onSubmit={handleSubscription} className="flex flex-col space-y-4">
+          <form onSubmit={handleSubscription} className="flex flex-col sm:flex-row gap-4">
             <input
               type="email"
-              placeholder="Enter your email"
-              className="px-4 py-3 rounded-lg bg-gray-800 text-gray-300 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              required
+              placeholder="Enter your email"
+              className="p-3 rounded-md bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-gray-400"
             />
             <button
               type="submit"
-              className="bg-blue-600 hover:bg-blue-800 text-white px-5 py-3 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105"
+              className="px-6 py-3 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors duration-300"
             >
               Subscribe
             </button>
           </form>
+
+          {/* Social Media Links */}
+          <div className="flex space-x-4 mt-6">
+            <a href="#" className="text-white hover:text-gray-300 transition-colors duration-300">
+              <FaTwitter size={24} />
+            </a>
+            <a href="#" className="text-white hover:text-gray-300 transition-colors duration-300">
+              <FaFacebookF size={24} />
+            </a>
+            <a href="#" className="text-white hover:text-gray-300 transition-colors duration-300">
+              <FaInstagram size={24} />
+            </a>
+          </div>
         </div>
-      </div>
-
-      {/* Social Media Links */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-5 text-2xl">
-        <a href="https://twitter.com" className="text-white hover:text-gray-300 transition-colors duration-300" aria-label="Twitter">
-          <FaTwitter />
-        </a>
-        <a href="https://facebook.com" className="text-white hover:text-gray-300 transition-colors duration-300" aria-label="Facebook">
-          <FaFacebookF />
-        </a>
-        <a href="https://instagram.com" className="text-white hover:text-gray-300 transition-colors duration-300" aria-label="Instagram">
-          <FaInstagram />
-        </a>
-      </div>
-
-      <div className="border-t border-gray-800 mt-14 pt-8 text-center">
-        <p className="text-sm sm:text-base">
-          &copy; {new Date().getFullYear()} Abakar Reads. All rights reserved.
-        </p>
-        <p className="mt-2 text-xs sm:text-sm">
-          "Reading is to the mind what exercise is to the body."
-        </p>
       </div>
     </footer>
   );
 };
 
 export default Footer;
+

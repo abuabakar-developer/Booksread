@@ -26,13 +26,22 @@ const BookCard: React.FC<BookCardProps> = ({ book }) => {
           quality={85}
         />
       </div>
-      <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 line-clamp-2">{book.title}</h3>
-      <p className="text-sm text-gray-700 dark:text-gray-300 mb-1">Author: {book.author_name?.join(', ') || 'Unknown'}</p>
-      <p className="text-sm text-gray-700 dark:text-gray-300 mb-1">Published: {book.published_year || 'N/A'}</p>
-      <p className="text-sm text-gray-700 dark:text-gray-300">Rating: {book.public_rating ? `${book.public_rating} / 5` : 'N/A'}</p>
+      <h3 className="text-xl font-bold mb-2 line-clamp-2" style={{ fontFamily: 'Poppins, sans-serif', color: '#2c3e50' }}>
+        {book.title}
+      </h3>
+      <p className="text-sm mb-1" style={{ fontFamily: 'Montserrat, sans-serif', color: '#8e44ad' }}>
+        Author: {book.author_name?.join(', ') || 'Unknown'}
+      </p>
+      <p className="text-xs mb-1" style={{ fontFamily: 'Roboto Mono, monospace', color: '#16a085' }}>
+        Published: {book.published_year || 'N/A'}
+      </p>
+      <p className="text-sm" style={{ fontFamily: 'Roboto Mono, monospace', color: '#c0392b' }}>
+        Rating: {book.public_rating ? `${book.public_rating} / 5` : 'N/A'}
+      </p>
     </div>
   );
 };
 
 export default BookCard;
+
 

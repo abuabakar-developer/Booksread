@@ -1,4 +1,3 @@
-// models/User.js
 import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
 
@@ -25,11 +24,9 @@ UserSchema.pre('save', async function (next) {
 });
 
 // Compare user entered password with hashed password in database
-UserSchema.methods.comparePassword = async function (enteredPassword) {
+UserSchema.methods.comparePassword = async function (enteredPassword: string) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
 
 export default mongoose.models.User || mongoose.model('User', UserSchema);
-
-
 
