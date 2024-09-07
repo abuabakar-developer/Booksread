@@ -1,4 +1,3 @@
-///details page
 'use client';
 
 import React, { useEffect, useState, useRef } from 'react';
@@ -133,7 +132,8 @@ const Details = ({ params }: { params: { id: string } }) => {
     <div className="mt-10 p-10 bg-gradient-to-r from-gray-50 to-gray-100 rounded-lg shadow-2xl">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row gap-10">
-          <div className="flex-1 relative h-80">
+          {/* Mobile layout: image on top, then content */}
+          <div className="flex-1 order-2 md:order-1 relative h-80">
             <Image
               src={book.cover_image}
               alt="book cover"
@@ -142,7 +142,7 @@ const Details = ({ params }: { params: { id: string } }) => {
               className="rounded-lg shadow-lg"
             />
           </div>
-          <div className="flex-1 flex flex-col">
+          <div className="flex-1 flex flex-col order-1 md:order-2">
             <h1 className="text-5xl font-serif font-bold text-gray-900 mb-6">{book.title}</h1>
             <p className="text-lg text-gray-700 mb-6">{book.desc}</p>
             <div className="flex justify-between items-center mb-6">
@@ -196,5 +196,3 @@ const Details = ({ params }: { params: { id: string } }) => {
 };
 
 export default Details;
-
-

@@ -1,4 +1,6 @@
-import { combineReducers, configureStore } from '@reduxjs/toolkit';
+// src/app/redux/store.tsx
+
+import { combineReducers, configureStore, MiddlewareArray } from "@reduxjs/toolkit";
 import {
     persistStore,
     persistReducer,
@@ -8,13 +10,13 @@ import {
     PERSIST,
     PURGE,
     REGISTER,
-} from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
-import cartSlice from './cartSlice';
+} from "redux-persist";
+import storage from "redux-persist/lib/storage";
+import cartSlice from "./cartSlice";
 
 // Persist configuration
 const persistConfig = {
-    key: 'root',
+    key: "root",
     version: 1,
     storage,
 };
@@ -35,15 +37,7 @@ export const store = configureStore({
             serializableCheck: {
                 ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
             },
-        }),
+        }) as MiddlewareArray<any>,
 });
 
-// Export persistor for persisting the store
 export const persistor = persistStore(store);
-
-// Infer the `RootState` and `AppDispatch` types from the store itself
-export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
-
-
-

@@ -1,4 +1,3 @@
-// pages/success.tsx
 import { useRouter } from 'next/router';
 
 const Success = () => {
@@ -47,3 +46,6 @@ const Success = () => {
 };
 
 export default Success;
+
+
+

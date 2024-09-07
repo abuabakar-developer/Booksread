@@ -1,6 +1,3 @@
-
-
-
 // pages/checkout.tsx
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
@@ -47,6 +44,3 @@ const Checkout = () => {
 };
 
 export default Checkout;
-
-
-
