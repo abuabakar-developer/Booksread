@@ -47,9 +47,12 @@ const LatestBooksSection = () => {
   }
 
   return (
-    <div className="py-20 bg-gradient-to-b from-teal-300 via-green-300 to-yellow-200 dark:bg-gradient-to-b dark:from-gray-900 dark:via-gray-700 dark:to-gray-900">
+    <div className="py-20 bg-gradient-to-b from-teal-300 via-green-300 to-yellow-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-10 text-center" style={{ fontFamily: 'Poppins, sans-serif' }}>
+        <h2
+          className="text-4xl font-bold text-gray-900 mb-10 text-center"
+          style={{ fontFamily: 'Poppins, sans-serif' }}
+        >
           Discover the Latest Books
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -57,7 +60,7 @@ const LatestBooksSection = () => {
             <div
               key={book.id}
               onClick={() => handleBookClick(book)}
-              className="relative transform transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-xl cursor-pointer bg-white dark:bg-gray-800 backdrop-blur-lg shadow-lg rounded-lg p-4"
+              className="relative transform transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-xl cursor-pointer bg-white backdrop-blur-lg shadow-lg rounded-lg p-4"
               style={{ fontFamily: 'Poppins, sans-serif' }}
             >
               <BookCard book={book} />
@@ -84,9 +87,5 @@ const LatestBooksSection = () => {
 };
 
 export default LatestBooksSection;
-
-
-
-
 
 

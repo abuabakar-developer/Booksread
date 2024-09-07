@@ -1,11 +1,10 @@
-
-"use client"
-import React, { useEffect, useState } from 'react';
-import BookCard from './bookCard';
-import Pagination from './pagination';
-import Details from '@/app/details/[id]/page';
-import { fetchBooks } from '../lib/fetchBooks';
-import LatestBooksSection from './LatestBooksSection';
+"use client";
+import React, { useEffect, useState } from "react";
+import BookCard from "./bookCard";
+import Pagination from "./pagination";
+import Details from "@/app/details/[id]/page";
+import { fetchBooks } from "../lib/fetchBooks";
+import LatestBooksSection from "./LatestBooksSection";
 
 type Book = {
   id: string;
@@ -14,8 +13,8 @@ type Book = {
 };
 
 const BookCatalog = () => {
-  const [query, setQuery] = useState('the lord of the rings');
-  const [searchType, setSearchType] = useState('intitle');
+  const [query, setQuery] = useState("the lord of the rings");
+  const [searchType, setSearchType] = useState("intitle");
   const [books, setBooks] = useState<Book[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [itemOffset, setItemOffset] = useState(0);
@@ -29,7 +28,7 @@ const BookCatalog = () => {
         const booksData = await fetchBooks(`${searchType}:${query}`);
         setBooks(booksData);
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
       } finally {
         setIsLoading(false);
       }
@@ -46,7 +45,7 @@ const BookCatalog = () => {
   };
 
   const handleSearchTypeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSearchType(e.target.value === 'title' ? 'intitle' : 'inauthor');
+    setSearchType(e.target.value === "title" ? "intitle" : "inauthor");
   };
 
   const handleBookClick = (book: Book) => {
@@ -65,19 +64,19 @@ const BookCatalog = () => {
         <LatestBooksSection />
 
         {/* Book Catalog Section */}
-        <div className="bg-gradient-to-b from-gray-200 via-gray-300 to-gray-400 dark:from-gray-800 dark:via-gray-700 dark:to-gray-600 py-20 mt-16 rounded-lg shadow-lg">
+        <div className="bg-gradient-to-b from-gray-200 via-gray-300 to-gray-400 py-20 mt-16 rounded-lg shadow-lg">
           <div className="flex flex-col justify-center items-center gap-5 mb-10">
-            <h5 className="text-2xl text-gray-900 dark:text-white font-semibold tracking-wide">Book Collection</h5>
-            <h2 className="text-5xl text-gray-900 dark:text-white font-extrabold leading-tight text-center">
+            <h5 className="text-2xl text-gray-900 font-semibold tracking-wide">Book Collection</h5>
+            <h2 className="text-5xl text-gray-900 font-extrabold leading-tight text-center">
               Embark on Your Next Adventure
             </h2>
-            <div className="flex gap-2 w-full max-w-lg shadow-lg rounded-full overflow-hidden bg-white dark:bg-gray-800 backdrop-blur-md">
+            <div className="flex gap-2 w-full max-w-lg shadow-lg rounded-full overflow-hidden bg-white backdrop-blur-md">
               <input
                 type="text"
                 value={query}
                 onChange={handleSearch}
                 placeholder="Search by title or author..."
-                className="border-0 p-4 w-full rounded-l-full focus:ring-4 focus:ring-blue-500 outline-none bg-transparent dark:text-white placeholder-gray-500"
+                className="border-0 p-4 w-full rounded-l-full focus:ring-4 focus:ring-blue-500 outline-none bg-transparent placeholder-gray-500"
               />
               <select
                 value={searchType}
@@ -100,7 +99,7 @@ const BookCatalog = () => {
                 <div 
                   key={book.id} 
                   onClick={() => handleBookClick(book)} 
-                  className="relative transform transition-transform duration-300 ease-in-out hover:scale-105 cursor-pointer bg-white dark:bg-gray-800 backdrop-blur-md shadow-lg rounded-lg p-4"
+                  className="relative transform transition-transform duration-300 ease-in-out hover:scale-105 cursor-pointer bg-white backdrop-blur-md shadow-lg rounded-lg p-4"
                 >
                   <BookCard book={book} />
                   <div className="absolute top-2 right-2 bg-blue-500 text-white rounded-full px-2 py-1 text-xs">New</div>
@@ -125,7 +124,6 @@ const BookCatalog = () => {
 };
 
 export default BookCatalog;
-
 
 
 
