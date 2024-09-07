@@ -3,8 +3,6 @@ import BookCard from './bookCard';
 import Details from '@/app/details/[id]/page';
 import { fetchBooks } from '../lib/fetchBooks';
 import '@fontsource/poppins'; // Importing the "Poppins" font
-import '@fontsource/montserrat'; // Montserrat for author
-import '@fontsource/roboto-mono';
 
 type Book = {
   id: string;
@@ -47,7 +45,7 @@ const LatestBooksSection = () => {
   }
 
   return (
-    <div className="py-20 bg-gradient-to-b from-teal-300 via-green-300 to-yellow-200">
+    <div id="latest-books" className="py-20 bg-gradient-to-b from-teal-300 via-green-300 to-yellow-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2
           className="text-4xl font-bold text-gray-900 mb-10 text-center"
@@ -87,5 +85,3 @@ const LatestBooksSection = () => {
 };
 
 export default LatestBooksSection;
-
-
