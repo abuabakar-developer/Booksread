@@ -1,6 +1,4 @@
-// src/app/redux/store.tsx
-
-import { combineReducers, configureStore, MiddlewareArray } from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import {
     persistStore,
     persistReducer,
@@ -37,7 +35,7 @@ export const store = configureStore({
             serializableCheck: {
                 ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
             },
-        }) as MiddlewareArray<any>,
+        }) as ReturnType<typeof getDefaultMiddleware>,
 });
 
 export const persistor = persistStore(store);
