@@ -7,12 +7,15 @@ interface BookCardProps {
     title: string;
     author_name?: string[];
     published_year?: number;
-    public_rating?: number | null; // Updated to allow null or undefined
+    public_rating?: number | null; // Allow null or undefined
   };
 }
 
 const BookCard: React.FC<BookCardProps> = ({ book }) => {
   const coverImageUrl = `https://books.google.com/books/content?id=${book.id}&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api`;
+
+  // Use a default value (e.g., 0) if public_rating is null or undefined
+  const rating = book.public_rating ?? 0; // Default to 0 if public_rating is null or undefined
 
   return (
     <div className="bg-white p-6 rounded-xl shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl backdrop-blur-md">
@@ -35,13 +38,13 @@ const BookCard: React.FC<BookCardProps> = ({ book }) => {
           <span className="text-sm text-gray-500 mr-2">
             Published: {book.published_year || 'N/A'}
           </span>
-          {book.public_rating != null && typeof book.public_rating === 'number' && (
+          {rating >= 0 && rating <= 5 && (
             <span className="flex items-center text-sm text-yellow-600">
               {Array.from({ length: 5 }, (_, index) => (
                 <svg
                   key={index}
                   xmlns="http://www.w3.org/2000/svg"
-                  fill={index < book.public_rating ? "currentColor" : "none"}
+                  fill={index < rating ? "currentColor" : "none"}
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                   className="w-4 h-4"
@@ -54,7 +57,7 @@ const BookCard: React.FC<BookCardProps> = ({ book }) => {
                   />
                 </svg>
               ))}
-              <span className="ml-1 text-gray-700">{book.public_rating.toFixed(1)}</span>
+              <span className="ml-1 text-gray-700">{rating.toFixed(1)}</span>
             </span>
           )}
         </div>
@@ -64,3 +67,4 @@ const BookCard: React.FC<BookCardProps> = ({ book }) => {
 };
 
 export default BookCard;
+
