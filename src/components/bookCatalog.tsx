@@ -1,8 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { SearchIcon } from "@heroicons/react/solid"; // Import Heroicons
-import BookCard from "./BookCard";
-import Pagination from "./Pagination";
+import BookCard from "./bookCard";
+import Pagination from "./pagination";
 import Details from "@/app/details/[id]/page";
 import { fetchBooks } from "../lib/fetchBooks";
 import LatestBooksSection from "./LatestBooksSection";
