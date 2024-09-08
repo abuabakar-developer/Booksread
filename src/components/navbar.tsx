@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '@/types/rootState';
 import Image from 'next/image';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
+import BookCatalog from './bookCatalog';
 
 const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -70,7 +71,7 @@ const Navbar = () => {
         </Link>
 
         {/* Menu Toggle for Mobile */}
-        <div className="lg:hidden">
+        <div className="lg:hidden flex items-center">
           <button onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Toggle Menu">
             {isMenuOpen ? (
               <XIcon className="w-8 h-8 text-white" />
@@ -95,3 +96,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+

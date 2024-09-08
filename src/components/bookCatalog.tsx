@@ -1,7 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import BookCard from "./bookCard";
-import Pagination from "./pagination";
+import { SearchIcon } from "@heroicons/react/solid"; // Import Heroicons
+import BookCard from "./BookCard";
+import Pagination from "./Pagination";
 import Details from "@/app/details/[id]/page";
 import { fetchBooks } from "../lib/fetchBooks";
 import LatestBooksSection from "./LatestBooksSection";
@@ -9,7 +10,9 @@ import LatestBooksSection from "./LatestBooksSection";
 type Book = {
   id: string;
   title: string;
-  author: string;
+  author_name?: string[];
+  published_year?: number;
+  public_rating?: number;
 };
 
 const BookCatalog = () => {
@@ -57,35 +60,38 @@ const BookCatalog = () => {
   }
 
   return (
-    <div className="py-20 mt-10 h-full w-full">
+    <div className="py-20 mt-10 h-full w-full bg-gradient-to-br from-gray-100 to-gray-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Latest Books Section */}
         <LatestBooksSection />
 
         {/* Book Catalog Section */}
-        <div className="bg-gradient-to-b from-gray-200 via-gray-300 to-gray-400 py-20 mt-16 rounded-lg shadow-lg">
-          <div className="flex flex-col justify-center items-center gap-5 mb-10">
-            <h5 className="text-2xl text-gray-900 font-semibold tracking-wide">Book Collection</h5>
-            <h2 className="text-5xl text-gray-900 font-extrabold leading-tight text-center">
+        <div id="book-catalog-search" className="bg-white shadow-xl rounded-lg p-8">
+          <div className="flex flex-col items-center gap-5 mb-10">
+            <h5 className="text-3xl font-bold text-gray-900">Book Collection</h5>
+            <h2 className="text-4xl lg:text-5xl font-extrabold text-gray-900 text-center">
               Embark on Your Next Adventure
             </h2>
-            <div className="flex gap-2 w-full max-w-lg shadow-lg rounded-full overflow-hidden bg-white backdrop-blur-md">
+            <div className="relative flex gap-2 w-full max-w-lg bg-gray-50 rounded-full shadow-md">
               <input
                 type="text"
                 value={query}
                 onChange={handleSearch}
                 placeholder="Search by title or author..."
-                className="border-0 p-4 w-full rounded-l-full focus:ring-4 focus:ring-blue-500 outline-none bg-transparent placeholder-gray-500"
+                className="border-0 p-4 w-full rounded-l-full pl-12 focus:ring-2 focus:ring-blue-500 outline-none bg-transparent placeholder-gray-600"
               />
               <select
                 value={searchType}
                 onChange={handleSearchTypeChange}
-                className="border-0 p-4 bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-r-full cursor-pointer focus:ring-4 focus:ring-blue-500 outline-none"
+                className="border-0 p-4 bg-blue-600 text-white rounded-r-full cursor-pointer focus:ring-2 focus:ring-blue-500 outline-none"
               >
                 <option value="title">Title</option>
                 <option value="author">Author</option>
               </select>
+              <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
+                <SearchIcon className="h-5 w-5 text-gray-500" aria-hidden="true" />
+              </div>
             </div>
           </div>
 
@@ -94,15 +100,17 @@ const BookCatalog = () => {
               <div className="border-t-4 border-b-4 border-blue-600 rounded-full w-16 h-16 animate-spin" />
             </div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {currentBooks.map((book: Book) => (
                 <div 
                   key={book.id} 
                   onClick={() => handleBookClick(book)} 
-                  className="relative transform transition-transform duration-300 ease-in-out hover:scale-105 cursor-pointer bg-white backdrop-blur-md shadow-lg rounded-lg p-4"
+                  className="relative transform transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-2xl cursor-pointer bg-white shadow-lg rounded-lg p-6"
                 >
                   <BookCard book={book} />
-                  <div className="absolute top-2 right-2 bg-blue-500 text-white rounded-full px-2 py-1 text-xs">New</div>
+                  <div className="absolute top-2 right-2 bg-blue-600 text-white rounded-full px-2 py-1 text-xs font-semibold">
+                    New
+                  </div>
                 </div>
               ))}
             </div>
@@ -124,7 +132,5 @@ const BookCatalog = () => {
 };
 
 export default BookCatalog;
-
-
 
 

@@ -196,3 +196,7 @@ const Details = ({ params }: { params: { id: string } }) => {
 };
 
 export default Details;
+
+
+
+

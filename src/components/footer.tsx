@@ -145,7 +145,12 @@ const Footer = () => {
           >
         Contact Us
       </a>
-    </li>
+        </li>
+       <li>
+          <a href="#book-catalog-search" className="hover:text-gray-300 transition-colors duration-300 cursor-pointer">
+          /Search For Books
+       </a>
+         </li>
           </ul>
         </div>
 
