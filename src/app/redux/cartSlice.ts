@@ -1,7 +1,8 @@
+
 // src/redux/cartSlice.ts
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-// Define the Book interface to type the book objects
+
 export interface Book {
     id: string;
     title: string;
@@ -9,15 +10,14 @@ export interface Book {
     quantity: number;
     cover_image: 'https://example.com/great-gatsby.jpg',
     price: 10,
-    // Add other properties as needed
 }
 
-// Define the CartState interface to type the state
+
 export interface CartState {
     books: Book[];
 }
       
-// Initialize the state with the correct type
+
 const initialState: CartState = {
     books: [],
 };
@@ -45,5 +45,3 @@ export const { addBook, removeBook } = cartSlice.actions;
 
 export default cartSlice.reducer;
     
-
-

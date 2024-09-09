@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useEffect, useState, useRef } from 'react';
@@ -196,7 +197,5 @@ const Details = ({ params }: { params: { id: string } }) => {
 };
 
 export default Details;
-
-
 
 

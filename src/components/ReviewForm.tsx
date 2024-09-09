@@ -29,7 +29,7 @@ const ReviewForm = ({ bookId }: { bookId: string }) => {
       setComment('');
       setTimeout(() => {
         setIsSubmitted(false);
-        router.replace(router.asPath); // Refresh the page to display the new review
+        router.replace(router.asPath); 
       }, 2000);
     } else {
       setIsError(true);

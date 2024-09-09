@@ -4,11 +4,10 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../types/rootState';
 import { removeBook } from '@/app/redux/cartSlice';
-
+          
 interface Book {
     id: string;
     title: string;
-    // Add other properties of the book as needed, e.g., author, price, etc.
 }
 
 const Cart = () => {
@@ -32,8 +31,4 @@ const Cart = () => {
 };
 
 export default Cart;
-
-
- 
-
 

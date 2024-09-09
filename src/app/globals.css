@@ -8,12 +8,6 @@
   padding: 0;
 }
 
-:root {
-  --primary-color: #159b15;
-  --primary-color-darker: #198a19;
-  --secondary-color: #333;
-  --secondary-color-lighter: #555;
-}
 
 a {
   text-decoration: none;

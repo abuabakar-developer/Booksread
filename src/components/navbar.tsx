@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useSelector } from 'react-redux';
@@ -15,7 +16,7 @@ const Navbar = () => {
     setIsLoggedIn(Boolean(localStorage.getItem('token')));
   }, []);
 
-  const handleLogout = () => {
+  const handleLogout = () => {  
     localStorage.removeItem('token');
     setIsLoggedIn(false);
   };
@@ -96,4 +97,5 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
 

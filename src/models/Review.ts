@@ -3,16 +3,16 @@ import mongoose, { Schema, Document } from 'mongoose';
 
 interface IReview extends Document {
   bookId: string;
-  content: string;  // Ensure this is named 'content' to match the frontend
+  content: string;  
   rating: number;
-  userName: string;  // Ensure this is named 'userName' to match the frontend
+  userName: string;  
 }
 
 const ReviewSchema: Schema = new Schema({
   bookId: { type: String, required: true },
-  content: { type: String, required: true },  // This is the description
+  content: { type: String, required: true },  
   rating: { type: Number, required: true },
-  userName: { type: String, required: true },  // This is the username
+  userName: { type: String, required: true },  
 }, {
   timestamps: true,
 });

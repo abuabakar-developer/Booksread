@@ -1,3 +1,4 @@
+
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import {
     persistStore,
@@ -39,7 +40,5 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
-
-
 
 

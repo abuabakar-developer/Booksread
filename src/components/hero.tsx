@@ -1,11 +1,11 @@
-"use client";
+"use client"
 import React, { useRef } from 'react';
+import LatestBooksSection from './LatestBooksSection';
 
 const Hero: React.FC = () => {
-  // Reference to the Latest Books section
+  
   const latestBooksRef = useRef<HTMLDivElement | null>(null);
 
-  // Scroll to Latest Books section
   const handleScrollToLatestBooks = () => {
     if (latestBooksRef.current) {
       latestBooksRef.current.scrollIntoView({ behavior: 'smooth' });
@@ -14,7 +14,6 @@ const Hero: React.FC = () => {
 
   return (
     <div>
-      {/* Hero Section */}
       <div
         className="relative h-[calc(100vh-75px)] w-full bg-center bg-cover bg-fixed"
         style={{ backgroundImage: 'url("/read.jpeg")' }}
@@ -39,8 +38,6 @@ const Hero: React.FC = () => {
           <p className="text-xl sm:text-2xl lg:text-3xl text-yellow-300 font-semibold opacity-95 animate-fadeIn delay-400">
             <strong>New Arrival:</strong> "The Enchanted Forest" - Get 20% off this week!
           </p>   
-
-          {/* Call-to-Action Button */}
           <button
             onClick={handleScrollToLatestBooks}
             className="px-8 py-4 bg-yellow-500 hover:bg-yellow-400 text-gray-900 font-semibold rounded-full transition-transform transform hover:scale-105 duration-300 shadow-2xl hover:shadow-yellow-500/50 animate-fadeIn delay-600"
@@ -50,20 +47,10 @@ const Hero: React.FC = () => {
         </div>
       </div>
 
-      {/* Latest Books Section */}
-      <div ref={latestBooksRef} className="latest-books-section py-16 bg-gradient-to-b from-gray-100 via-white to-gray-100 relative">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10 bg-book-pattern bg-center bg-cover"></div>
-
-        {/* Latest Books Heading */}
-        <div className="relative z-10 text-center">
-          <h2 className="text-5xl sm:text-6xl font-extrabold text-gray-800 mb-4 tracking-tight">
-            Latest <span className="text-yellow-500">Books</span>
-          </h2>
-        </div>
-      </div>
+      <LatestBooksSection latestBooksRef={latestBooksRef} />
     </div>
   );
 };
 
 export default Hero;
+

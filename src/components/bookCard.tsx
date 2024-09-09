@@ -7,15 +7,14 @@ interface BookCardProps {
     title: string;
     author_name?: string[];
     published_year?: number;
-    public_rating?: number | null; // Allow null or undefined
+    public_rating?: number | null; 
   };
 }
 
 const BookCard: React.FC<BookCardProps> = ({ book }) => {
   const coverImageUrl = `https://books.google.com/books/content?id=${book.id}&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api`;
 
-  // Use a default value (e.g., 0) if public_rating is null or undefined
-  const rating = book.public_rating ?? 0; // Default to 0 if public_rating is null or undefined
+  const rating = book.public_rating ?? 0; 
 
   return (
     <div className="bg-white p-6 rounded-xl shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl backdrop-blur-md">

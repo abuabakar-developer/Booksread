@@ -9,7 +9,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
 
 async function testStripeKey() {
   try {
-    const account = await stripe.accounts.retrieve(); // Corrected method
+    const account = await stripe.accounts.retrieve(); 
     console.log('Account Info:', account);
   } catch (error: any) {
     console.error('Error:', error.message);

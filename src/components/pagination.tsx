@@ -5,7 +5,7 @@ import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai';
 interface PaginationProps {
   setItemOffset: (offset: number) => void;
   itemsPerPage: number;
-  books: any[]; // Adjust this type based on your book structure
+  books: any[]; 
 }
 
 const Pagination: React.FC<PaginationProps> = ({ setItemOffset, itemsPerPage, books }) => {

@@ -22,13 +22,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        {/* Wrap your application with the Redux Provider */}
         <Provider store={store}>
-          {/* PersistGate delays the rendering of the UI until the persisted state has been retrieved and saved to Redux */}
           <PersistGate loading={null} persistor={persistor}>
-            {/* SessionProvider provides the NextAuth session context to your app */}
             <SessionProvider>
-              {/* Your components */}
               <FreeDelivery />
               <Navbar />
               {children}

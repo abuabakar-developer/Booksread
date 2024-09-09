@@ -18,7 +18,7 @@ export const connectToDatabase = async (): Promise<void> => {
     console.log('MongoDB connected successfully');
   } catch (error) {
     console.error('MongoDB connection error:', error);
-    process.exit(1); // Exit process with an error code
+    process.exit(1); 
   }
 };
 

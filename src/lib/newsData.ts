@@ -15,6 +15,6 @@ export const newsData = [
       date: 'September 1, 2024',
       link: '/news/author-spotlight',
     },
-    // Add more news items here
+    
   ];
   

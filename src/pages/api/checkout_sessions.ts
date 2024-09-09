@@ -3,13 +3,13 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import Stripe from 'stripe';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: '2024-06-20', // Replace with the correct version if known
+  apiVersion: '2024-06-20', 
 });
 
-// Define the type for the line items expected in req.body.items
+
 type LineItem = {
   name: string;
-  price: number; // Assuming price is given in cents
+  price: number; 
   quantity: number;
 };
 
@@ -24,7 +24,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             product_data: {
               name: item.name,
             },
-            unit_amount: item.price, // Amount in cents
+            unit_amount: item.price,
           },
           quantity: item.quantity,
         })),

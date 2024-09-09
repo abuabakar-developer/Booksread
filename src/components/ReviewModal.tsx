@@ -17,7 +17,6 @@ const ReviewModal: React.FC<ReviewModalProps> = ({ handleHideModal, bookId, onSu
     e.preventDefault();
 
     if (!rating || !content) {
-      // Show a toast or error message here
       return;
     }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from 'next/image';  // Import Next.js Image component
+import Image from 'next/image';  
 
 type NewsProps = {
   title: string;
@@ -12,13 +12,12 @@ type NewsProps = {
 const NewsCard: React.FC<NewsProps> = ({ title, description, image, date, link }) => {
   return (
     <div className="relative transform transition duration-300 ease-in-out hover:scale-105 cursor-pointer bg-white/70 dark:bg-gray-800/70 backdrop-blur-md shadow-lg rounded-lg p-4">
-      {/* Use Next.js Image component instead of <img> */}
       {image && (
         <div className="relative w-full h-40">
           <Image
             src={image}
             alt={title}
-            layout="fill"  // Ensures the image covers the container
+            layout="fill"  
             objectFit="cover"
             className="rounded-t-lg"
           />

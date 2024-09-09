@@ -14,7 +14,6 @@ import { Book } from '@/types/cartTypes';
 
 
 const Cart = () => {
-    // Ensure hooks are used correctly
     const { books } = useSelector((state: RootState) => state.cart);
     const dispatch = useDispatch();
 
