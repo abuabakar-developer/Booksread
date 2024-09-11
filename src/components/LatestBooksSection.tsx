@@ -55,7 +55,7 @@ const LatestBooksSection = ({ latestBooksRef }: { latestBooksRef: React.RefObjec
       className="py-20 bg-gray-100 relative overflow-hidden"
     >
       <div className="absolute inset-0 opacity-20">
-        <img src="/assets/books-background.svg" alt="Books Background" className="w-full h-full object-cover animate-float-slow" />
+        <img src="/assets/books-background.svg" alt="Books" className="w-full h-full object-cover animate-float-slow" />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
