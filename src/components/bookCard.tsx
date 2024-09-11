@@ -1,5 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
+import { useDispatch } from 'react-redux';
+import { addBook } from '@/app/redux/cartSlice';
 
 interface BookCardProps {
   book: {
@@ -12,9 +14,23 @@ interface BookCardProps {
 }
 
 const BookCard: React.FC<BookCardProps> = ({ book }) => {
+  const dispatch = useDispatch();
   const coverImageUrl = `https://books.google.com/books/content?id=${book.id}&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api`;
 
-  const rating = book.public_rating ?? 0; 
+  const rating = book.public_rating ?? 0;
+
+  const handleAddToCart = () => {
+    const bookToAdd = {
+      id: book.id,
+      title: book.title,
+      author: book.author_name?.join(', ') || 'Unknown',
+      quantity: 1, // Default to 1, you can adjust this if needed
+      cover_image: coverImageUrl,
+      price: 10, // Default price, you can adjust this or fetch it from an API if needed
+    };
+
+    dispatch(addBook(bookToAdd));
+  };
 
   return (
     <div className="bg-white p-6 rounded-xl shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl backdrop-blur-md">
@@ -60,6 +76,12 @@ const BookCard: React.FC<BookCardProps> = ({ book }) => {
             </span>
           )}
         </div>
+        <button
+          onClick={handleAddToCart}
+          className="mt-auto px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-md transition-transform duration-150 hover:scale-105"
+        >
+          Add to Cart
+        </button>
       </div>
     </div>
   );

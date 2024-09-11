@@ -1,3 +1,5 @@
+
+
 "use client";
 import React, { useEffect, useState } from "react";
 import BookCard from "./bookCard";
@@ -126,4 +128,7 @@ const BookCatalog = () => {
 };
 
 export default BookCatalog;
+
+
+
 

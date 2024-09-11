@@ -1,11 +1,10 @@
-
-import { useEffect, useState } from 'react';
-import Link from 'next/link';
+// src/components/navbar.tsx
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/types/rootState';
+import Link from 'next/link';
 import Image from 'next/image';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
-import BookCatalog from './bookCatalog';
 
 const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -97,5 +96,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-

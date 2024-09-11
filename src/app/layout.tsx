@@ -12,6 +12,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { persistor, store } from '../app/redux/store';
 import FreeDelivery from '@/components/freeDelievery';
 
+
 const inter = Inter({ subsets: ['latin'] });
 
 interface RootLayoutProps {
