@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useEffect, useState, useRef } from 'react';
@@ -8,6 +7,7 @@ import Image from 'next/image';
 import ReviewModal from '@/components/ReviewModal';
 import ReviewCard from '@/components/ReviewCard';
 import { loadStripe } from '@stripe/stripe-js';
+import AOS from 'aos'; // Import AOS for animation
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY!);
 
@@ -134,7 +134,10 @@ const Details = ({ params }: { params: { id: string } }) => {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row gap-10">
           {/* Mobile layout: image on top, then content */}
-          <div className="flex-1 order-2 md:order-1 relative h-80">
+          <div 
+            className="flex-1 order-2 md:order-1 relative h-80"
+            data-aos="fade-up"
+          >
             <Image
               src={book.cover_image}
               alt="book cover"
@@ -143,7 +146,11 @@ const Details = ({ params }: { params: { id: string } }) => {
               className="rounded-lg shadow-lg"
             />
           </div>
-          <div className="flex-1 flex flex-col order-1 md:order-2">
+          <div 
+            className="flex-1 flex flex-col order-1 md:order-2"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
             <h1 className="text-5xl font-serif font-bold text-gray-900 mb-6">{book.title}</h1>
             <p className="text-lg text-gray-700 mb-6">{book.desc}</p>
             <div className="flex justify-between items-center mb-6">
@@ -154,6 +161,7 @@ const Details = ({ params }: { params: { id: string } }) => {
               <button
                 onClick={handleAddToCart}
                 className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-full flex items-center shadow-md transition transform hover:scale-105"
+                data-aos="zoom-in"
               >
                 Add to Cart <BsFillCartFill className="ml-2" />
               </button>
@@ -163,6 +171,8 @@ const Details = ({ params }: { params: { id: string } }) => {
                   handleShowReviews();
                 }}
                 className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-full flex items-center shadow-md transition transform hover:scale-105"
+                data-aos="zoom-in"
+                data-aos-delay="300"
               >
                 Review Book <FiStar className="ml-2" />
               </button>
@@ -172,6 +182,7 @@ const Details = ({ params }: { params: { id: string } }) => {
                 handleHideModal={handleHideModal}
                 bookId={book.id}
                 onSubmit={handleReviewSubmit}
+                data-aos="fade-up"
               />
             )}
           </div>
@@ -179,6 +190,8 @@ const Details = ({ params }: { params: { id: string } }) => {
         <div
           ref={reviewSectionRef}
           className="mt-10"
+          data-aos="fade-up"
+          data-aos-delay="500"
         >
           <h2 className="text-3xl font-bold text-gray-900 mb-6">Reviews</h2>
           <div className="grid gap-6">
@@ -197,5 +210,3 @@ const Details = ({ params }: { params: { id: string } }) => {
 };
 
 export default Details;
-
-

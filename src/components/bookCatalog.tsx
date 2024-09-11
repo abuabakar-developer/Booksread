@@ -1,7 +1,7 @@
-
-
 "use client";
 import React, { useEffect, useState } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import BookCard from "./bookCard";
 import Pagination from "./pagination";
 import Details from "@/app/details/[id]/page";
@@ -24,6 +24,12 @@ const BookCatalog = () => {
   const [selectedBookId, setSelectedBookId] = useState<string | null>(null);
 
   useEffect(() => {
+    AOS.init({
+      duration: 1000, // Adjust animation duration
+      easing: "ease-in-out", // Animation style
+      once: true, // Animation happens only once when scrolled into view
+    });
+
     const fetchData = async () => {
       try {
         setIsLoading(true);
@@ -62,7 +68,7 @@ const BookCatalog = () => {
     <div className="py-20 mt-10 h-full w-full bg-gradient-to-br from-gray-100 to-gray-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-        <div id="book-catalog-search" className="bg-white shadow-xl rounded-lg p-8">
+        <div id="book-catalog-search" className="bg-white shadow-xl rounded-lg p-8" data-aos="fade-up">
           <div className="flex flex-col items-center gap-5 mb-10">
             <h5 className="text-3xl font-bold text-gray-900">Book Collection</h5>
             <h2 className="text-6xl font-extrabold text-gray-900 text-center">
@@ -102,6 +108,7 @@ const BookCatalog = () => {
                   key={book.id} 
                   onClick={() => handleBookClick(book)} 
                   className="relative transform transition-transform duration-300 ease-in-out hover:scale-105 cursor-pointer bg-white shadow-lg rounded-lg p-6"
+                  data-aos="fade-up"
                 >
                   <BookCard book={book} />
                   <div className="absolute top-2 right-2 bg-blue-600 text-white rounded-full px-2 py-1 text-xs font-semibold">
@@ -113,7 +120,7 @@ const BookCatalog = () => {
           )}
 
           {!isLoading && (
-            <div className="mt-10">
+            <div className="mt-10" data-aos="fade-up">
               <Pagination
                 setItemOffset={setItemOffset}
                 itemsPerPage={itemsPerPage}
@@ -128,7 +135,3 @@ const BookCatalog = () => {
 };
 
 export default BookCatalog;
-
-
-
-

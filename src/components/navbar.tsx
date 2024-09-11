@@ -21,7 +21,7 @@ const Navbar = () => {
   };
 
   const menuItems = (
-    <>
+    <div className="flex space-x-4">
       {isLoggedIn ? (
         <>
           <span className="text-white text-sm">Welcome, User!</span>
@@ -47,16 +47,16 @@ const Navbar = () => {
           </Link>
         </>
       ) : (
-        <>
+        <div className="flex space-x-4 bg-gray-200 p-2 rounded-md">
           <Link href="/login" className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-transform duration-150 hover:scale-105">
             Log in
           </Link>
-          <Link href="/register" className="px-4 py-2 text-white hover:text-gray-300">
+          <Link href="/register" className="px-4 py-2 text-blue-600 hover:text-blue-800">
             Register
           </Link>
-        </>
+        </div>
       )}
-    </>
+    </div>
   );
 
   return (
@@ -96,3 +96,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+

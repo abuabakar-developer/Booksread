@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link'; // Import the Link component for navigation
 import { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -63,6 +64,7 @@ const AboutUs = () => {
           </div>
         </div>
 
+        {/* Values Section */}
         <div className="mb-16 text-center" data-aos="fade-up">
           <h3 className="text-4xl font-semibold text-green-700">Our Values</h3>
           <ul className="mt-6 list-disc list-inside text-gray-700 text-lg md:text-xl max-w-2xl mx-auto space-y-3">
@@ -98,7 +100,7 @@ const AboutUs = () => {
               <p className="text-gray-600">Founder & CEO</p>
             </div>
 
-            {/* New Team Member: Abakar */}
+            {/* New Team Member */}
             <div className="flex flex-col items-center text-center transition-transform transform hover:scale-105">
               <div className="w-40 h-40 relative">
                 <Image
@@ -122,9 +124,23 @@ const AboutUs = () => {
             Have questions? Contact us at <a href="mailto:support@bookstore.com" className="text-green-600 hover:underline">support@bookstore.com</a> or call us at <span className="text-green-600">0315-4195240</span>.
           </p>
         </div>
+
+        {/* Go Back Button */}
+        <div className="text-center mt-12">
+          <Link href="/" legacyBehavior>
+            <a
+              className="inline-block px-8 py-3 bg-green-600 text-white font-bold text-lg rounded-full shadow-lg hover:bg-green-700 transition-colors duration-300"
+              data-aos="fade-up"
+              data-aos-delay="400"
+            >
+              Go Back to Home
+            </a>
+          </Link>
+        </div>
       </div>
     </section>
   );
 };
 
 export default AboutUs;
+

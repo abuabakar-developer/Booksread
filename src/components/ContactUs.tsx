@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import Link from 'next/link';
 
 const ContactUs: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -20,20 +21,17 @@ const ContactUs: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    setIsSubmitted(true);
-
-
+    setIsSubmitted(true); // Show success message
     setFormData({
       name: '',
       email: '',
       message: '',
     });
 
-  
+    // Hide success message after 10 seconds (10000 milliseconds)
     setTimeout(() => {
       setIsSubmitted(false);
-    }, 3000);
+    }, 10000);
   };
 
   return (
@@ -125,9 +123,19 @@ const ContactUs: React.FC = () => {
 
             {/* Success message */}
             {isSubmitted && (
-              <p className="text-green-600 mt-4">
-                Your message has been sent successfully! We will get back to you soon.
-              </p>
+              <div className="mt-4">
+                <p className="text-green-600">
+                  Your message has been sent successfully! We will get back to you soon.
+                </p>
+                {/* Go Back Button */}
+                <Link href="/" legacyBehavior>
+                <a className="block mt-4 text-center text-green-600 hover:text-green-800 transition-all duration-300">
+                  <button className="bg-gray-200 px-4 py-2 rounded-lg hover:bg-gray-300">
+                    Go Back
+                  </button>
+                </a>
+              </Link>
+              </div>
             )}
           </div>
         </div>
@@ -137,11 +145,5 @@ const ContactUs: React.FC = () => {
 };
 
 export default ContactUs;
-
-
-
-
-
-
 
 

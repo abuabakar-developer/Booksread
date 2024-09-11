@@ -4,6 +4,8 @@ import Details from '@/app/details/[id]/page';
 import { fetchBooks } from '../lib/fetchBooks';
 import '@fontsource/poppins';
 import '@fontsource/roboto';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 type Book = { 
   id: string;
@@ -27,6 +29,7 @@ const LatestBooksSection = ({ latestBooksRef }: { latestBooksRef: React.RefObjec
         console.error('Error fetching latest books:', error);
       } finally {
         setIsLoading(false);
+        AOS.init({ duration: 1000, offset: 100 }); // Initialize AOS
       }
     };
 
@@ -59,21 +62,22 @@ const LatestBooksSection = ({ latestBooksRef }: { latestBooksRef: React.RefObjec
         <h2
           className="text-4xl font-bold text-gray-900 mb-10 text-center"
           style={{ fontFamily: 'Poppins, sans-serif' }}
+          data-aos="fade-up"
         >
           Discover the Latest Books
         </h2>
 
-        {/* Book Grid with smooth animations */}
+        {/* Book Grid with AOS animations */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {latestBooks.slice(0, showMore ? 20 : 4).map((book) => (
             <div
               key={book.id}
               onClick={() => handleBookClick(book)}
               className="relative transform transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-2xl cursor-pointer bg-white backdrop-blur-lg shadow-md rounded-lg p-4"
+              data-aos="fade-up"  // AOS animation
               style={{ fontFamily: 'Roboto, sans-serif' }}
             >
               <BookCard book={book} />
-              {/* New Label with Pulse Effect */}
               <div className="absolute top-2 right-2 bg-teal-400 text-white rounded-full px-3 py-1 text-xs font-semibold animate-pulse">
                 New
               </div>
@@ -88,6 +92,7 @@ const LatestBooksSection = ({ latestBooksRef }: { latestBooksRef: React.RefObjec
               onClick={handleViewMoreClick}
               className="text-white font-bold py-3 px-8 rounded-full bg-teal-500 hover:bg-teal-600 transition-colors duration-300 shadow-md transform hover:scale-105"
               style={{ fontFamily: 'Poppins, sans-serif' }}
+              data-aos="zoom-in"
             >
               View More
             </button>
@@ -99,4 +104,3 @@ const LatestBooksSection = ({ latestBooksRef }: { latestBooksRef: React.RefObjec
 };
 
 export default LatestBooksSection;
-
