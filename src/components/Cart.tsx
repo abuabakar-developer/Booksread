@@ -1,4 +1,3 @@
-// src/components/Cart.tsx
 
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -19,7 +18,7 @@ const Cart = () => {
     };
 
     return (
-        <div>
+        <div>   
             {books.map((book: Book) => (
                 <div key={book.id}>
                     <h3>{book.title}</h3>
@@ -30,5 +29,9 @@ const Cart = () => {
     );
 };
 
-export default Cart;
+export default Cart;  
+
+
+
+
 

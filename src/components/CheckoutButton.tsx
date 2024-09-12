@@ -10,12 +10,12 @@ const CheckoutButton = ({ items }: { items: Array<{ id: string; quantity: number
     setLoading(true);
     const response = await fetch('/api/create-checkout-session', {
       method: 'POST',
-      headers: {
+      headers: {   
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ items }),
     });
-
+              
     const { id } = await response.json();
     const stripe = await stripePromise;
 
@@ -40,4 +40,10 @@ const CheckoutButton = ({ items }: { items: Array<{ id: string; quantity: number
 };
 
 export default CheckoutButton;
+
+
+
+
+
+     
 

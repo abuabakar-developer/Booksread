@@ -7,7 +7,7 @@ import Image from 'next/image';
 import ReviewModal from '@/components/ReviewModal';
 import ReviewCard from '@/components/ReviewCard';
 import { loadStripe } from '@stripe/stripe-js';
-import AOS from 'aos'; // Import AOS for animation
+import AOS from 'aos'; 
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY!);
 
@@ -18,7 +18,7 @@ const Details = ({ params }: { params: { id: string } }) => {
   const [reviews, setReviews] = useState<any[]>([]);
   const [showModal, setShowModal] = useState(false);
   const reviewSectionRef = useRef<HTMLDivElement | null>(null);
-
+         
   useEffect(() => { 
     const fetchDetails = async () => { 
       try {
@@ -38,7 +38,7 @@ const Details = ({ params }: { params: { id: string } }) => {
         console.log('Error fetching book details:', error);
       }
     };
-    fetchDetails();
+    fetchDetails();                 
   }, [URL]);
 
   useEffect(() => {
@@ -145,7 +145,7 @@ const Details = ({ params }: { params: { id: string } }) => {
               objectFit="cover"
               className="rounded-lg shadow-lg"
             />
-          </div>
+          </div>       
           <div 
             className="flex-1 flex flex-col order-1 md:order-2"
             data-aos="fade-up"
@@ -210,3 +210,7 @@ const Details = ({ params }: { params: { id: string } }) => {
 };
 
 export default Details;
+
+
+
+

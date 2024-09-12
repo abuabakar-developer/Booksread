@@ -1,4 +1,3 @@
-// layout.ts
 "use client";
 import React, { ReactNode, useEffect } from 'react';
 import Navbar from '@/components/navbar';
@@ -21,11 +20,15 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   useEffect(() => {
+    // Initialize AOS animations
     AOS.init({
       duration: 1000, // Duration of animation
       easing: 'ease-in-out', // Easing function
       once: true, // Whether animation should happen only once
     });
+
+    // Force light mode by removing 'dark' class if it exists
+    document.documentElement.classList.remove('dark');
   }, []);
 
   return (
@@ -45,3 +48,4 @@ export default function RootLayout({ children }: RootLayoutProps) {
     </html>
   );
 }
+
