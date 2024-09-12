@@ -135,7 +135,7 @@ const Footer = () => {
 
       {/* Social Media Icons */}
       <div className="flex justify-center space-x-6 mt-12">
-        <a href="https://github.com/abuabakar-developer/abooksread.vercel.app" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-300 transition-colors duration-300">
+        <a href="https://github.com/abuabakar-developer/Booksread" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-300 transition-colors duration-300">
           <FaGithub size={32} />
         </a>
         <a href="https://linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-300 transition-colors duration-300">
@@ -147,9 +147,6 @@ const Footer = () => {
 };
 
 export default Footer;
-
-
-
 
 
 
